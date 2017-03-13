@@ -17,11 +17,15 @@ import java.util.Date;
 import javax.inject.Inject;
 
 import io.realm.RealmResults;
+import timber.log.Timber;
 
 public class MainActivity extends BaseActivity implements MainContract.View {
 
     @Inject MainPresenter mPresenter;
+
     private ActivityMainBinding mBinding;
+    private NoteAdapter noteAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +61,9 @@ public class MainActivity extends BaseActivity implements MainContract.View {
 
     @Override
     public void setProjects(RealmResults<Note> notes) {
-        mBinding.included.recyclerViewNotes.setAdapter(new NoteAdapter(notes));
+        noteAdapter = new NoteAdapter(notes);
+        mBinding.included.recyclerViewNotes.setAdapter(noteAdapter);
+        Timber.d("Showing");
     }
 
     @Override

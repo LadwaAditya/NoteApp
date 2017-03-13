@@ -1,4 +1,10 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="title_medium">18sp</dimen>
+
+
+    <dimen name="one_dp">1dp</dimen>
+    <dimen name="horizontal_margin_small">10dp</dimen>
+    <dimen name="verticle_margin_small">20dp</dimen>
+    <dimen name="top_margin_large">60dp</dimen>
 </resources>

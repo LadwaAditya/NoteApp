@@ -5,12 +5,15 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.view.View;
 
 import com.ladwa.aditya.notehomelane.R;
 import com.ladwa.aditya.notehomelane.databinding.ActivityAddNoteBinding;
 import com.ladwa.aditya.notehomelane.ui.base.BaseActivity;
 
 import javax.inject.Inject;
+
+import timber.log.Timber;
 
 public class AddNoteActivity extends BaseActivity implements AddNoteContract.View {
 
@@ -43,5 +46,10 @@ public class AddNoteActivity extends BaseActivity implements AddNoteContract.Vie
     public void setUpView() {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_note);
         setSupportActionBar(mBinding.toolbar);
+    }
+
+
+    public void onClickSaveNote(View view) {
+        Timber.d("Save note");
     }
 }
