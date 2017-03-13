@@ -63,8 +63,6 @@ public class AddNoteActivity extends BaseActivity implements AddNoteContract.Vie
     public void setUpView() {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_note);
         mBinding.toolbar.setTitle(R.string.title_add_new_note);
-
-
     }
 
 
@@ -82,6 +80,12 @@ public class AddNoteActivity extends BaseActivity implements AddNoteContract.Vie
     private void validateFields() {
         if (mBinding.txtNoteTitle.getText().length() > 5 && mBinding.txtNoteText.getText().length() > 10) {
             saveNote();
+        } else {
+            if (mBinding.txtNoteTitle.getText().length() < 5) {
+                mBinding.txtNoteTitle.setError("Title must be grater than 5 characters :)");
+            } else if (mBinding.txtNoteText.getText().length() < 10) {
+                mBinding.txtNoteText.setError("Note text must be grater than 10 characters :)");
+            }
         }
     }
 
