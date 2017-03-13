@@ -22,12 +22,13 @@ public class DataManager implements DataRepository {
     }
 
     @Override
-    public void createDummyNote(Note note) {
+    public long createDummyNote(Note note) {
         note.setId(getNotes().size() + 1);
         Realm dataRealm = mDbManager.getDataRealm();
         dataRealm.beginTransaction();
         dataRealm.insert(note);
         dataRealm.commitTransaction();
+        return note.getId();
     }
 
     @Override
