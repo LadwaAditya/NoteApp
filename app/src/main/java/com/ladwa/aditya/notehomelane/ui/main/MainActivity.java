@@ -12,12 +12,9 @@ import com.ladwa.aditya.notehomelane.ui.adapter.NoteAdapter;
 import com.ladwa.aditya.notehomelane.ui.add.AddNoteActivity;
 import com.ladwa.aditya.notehomelane.ui.base.BaseActivity;
 
-import java.util.Date;
-
 import javax.inject.Inject;
 
 import io.realm.RealmResults;
-import timber.log.Timber;
 
 public class MainActivity extends BaseActivity implements MainContract.View {
 
@@ -44,12 +41,6 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         setSupportActionBar(mBinding.toolbar);
         mBinding.included.recyclerViewNotes.setLayoutManager(new LinearLayoutManager(this));
-        Note newNote = new Note();
-        newNote.setTitle("New Title");
-        newNote.setText("This is the text for the new Text");
-        newNote.setUrl("basicUrl");
-        newNote.setCreatedAt(new Date().getTime());
-//        mPresenter.createNote(newNote);
         mPresenter.getAllNotes();
     }
 
@@ -63,7 +54,6 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     public void setProjects(RealmResults<Note> notes) {
         noteAdapter = new NoteAdapter(notes);
         mBinding.included.recyclerViewNotes.setAdapter(noteAdapter);
-        Timber.d("Showing");
     }
 
     @Override

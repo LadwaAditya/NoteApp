@@ -5,6 +5,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/coordinatorlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.ladwa.aditya.notehomelane.ui.main.MainActivity">
@@ -63,13 +64,7 @@
                         android:inputType="textMultiLine"/>
                 </android.support.design.widget.TextInputLayout>
 
-                <ImageView
-                    android:id="@+id/img_note_attachment"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="center_horizontal"
-                    android:onClick="onClick"
-                    android:src="@color/colorAccent"/>
+
 
                 <Button
                     android:id="@+id/btn_save"
@@ -80,6 +75,14 @@
                     android:layout_marginTop="@dimen/verticle_margin_small"
                     android:onClick="onClick"
                     android:text="@string/save"/>
+
+                <ImageView
+                    android:id="@+id/img_attachment"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="onClick"
+                    android:scaleType="centerCrop"/>
 
             </LinearLayout>
         </RelativeLayout>

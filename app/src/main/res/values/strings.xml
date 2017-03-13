@@ -5,4 +5,6 @@
     <string name="hint_note_title">Note title</string>
     <string name="hint_note_text">Note Text</string>
     <string name="save">Save</string>
+    <string name="title_add_new_note">Add a New Note</string>
+    <string name="permission_error">Please grant the Permission</string>
 </resources>

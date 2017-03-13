@@ -1,6 +1,7 @@
 package com.ladwa.aditya.notehomelane.ui.add;
 
 import com.ladwa.aditya.notehomelane.data.DataManager;
+import com.ladwa.aditya.notehomelane.data.model.Note;
 import com.ladwa.aditya.notehomelane.ui.base.BasePresenter;
 
 import javax.inject.Inject;
@@ -28,5 +29,10 @@ public class AddNotePresenter extends BasePresenter<AddNoteContract.View> implem
     @Override
     public void detachView() {
         super.detachView();
+    }
+
+    @Override
+    public void createNote(Note note) {
+        dataManager.createDummyNote(note);
     }
 }

@@ -18,7 +18,6 @@ public interface MainContract {
     }
 
     interface Presenter extends MvpPresenter<View> {
-        void createNote(Note note);
 
         void getAllNotes();
     }

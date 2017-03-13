@@ -34,10 +34,7 @@ public class MainPresenter extends BasePresenter<MainContract.View> implements M
         super.detachView();
     }
 
-    @Override
-    public void createNote(Note note) {
-        dataManager.createDummyNote(note);
-    }
+
 
     @Override
     public void getAllNotes() {

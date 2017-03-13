@@ -1,5 +1,6 @@
 package com.ladwa.aditya.notehomelane.ui.add;
 
+import com.ladwa.aditya.notehomelane.data.model.Note;
 import com.ladwa.aditya.notehomelane.ui.base.MvpPresenter;
 import com.ladwa.aditya.notehomelane.ui.base.MvpView;
 
@@ -13,6 +14,6 @@ public class AddNoteContract {
     }
 
     interface Presenter extends MvpPresenter<View> {
-
+        void createNote(Note note);
     }
 }
