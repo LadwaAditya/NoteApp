@@ -34,5 +34,6 @@ public class AddNotePresenter extends BasePresenter<AddNoteContract.View> implem
     @Override
     public void createNote(Note note) {
         dataManager.createDummyNote(note);
+        getMvpView().noteSaved();
     }
 }

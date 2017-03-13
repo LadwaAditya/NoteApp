@@ -13,6 +13,7 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.view.View;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.devdoo.rxpermissions.RxPermission;
@@ -141,4 +142,8 @@ public class AddNoteActivity extends BaseActivity implements AddNoteContract.Vie
         return cursor.getString(idx);
     }
 
+    @Override
+    public void noteSaved() {
+        Toast.makeText(this, "Noted Saved", Toast.LENGTH_SHORT).show();
+    }
 }

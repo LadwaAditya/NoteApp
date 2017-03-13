@@ -10,7 +10,7 @@ import com.ladwa.aditya.notehomelane.ui.base.MvpView;
 
 public class AddNoteContract {
     interface View extends MvpView {
-
+        void noteSaved();
     }
 
     interface Presenter extends MvpPresenter<View> {
