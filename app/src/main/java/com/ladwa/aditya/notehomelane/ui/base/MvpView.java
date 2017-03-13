@@ -5,4 +5,5 @@ package com.ladwa.aditya.notehomelane.ui.base;
  */
 
 public interface MvpView {
+    void setUpView();
 }
