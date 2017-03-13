@@ -9,6 +9,7 @@ import com.ladwa.aditya.notehomelane.R;
 import com.ladwa.aditya.notehomelane.data.model.Note;
 import com.ladwa.aditya.notehomelane.databinding.ActivityMainBinding;
 import com.ladwa.aditya.notehomelane.ui.adapter.NoteAdapter;
+import com.ladwa.aditya.notehomelane.ui.add.AddNoteActivity;
 import com.ladwa.aditya.notehomelane.ui.base.BaseActivity;
 
 import java.util.Date;
@@ -57,11 +58,15 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     @Override
     public void setProjects(RealmResults<Note> notes) {
         mBinding.included.recyclerViewNotes.setAdapter(new NoteAdapter(notes));
-
     }
 
     @Override
     public void showEmpty() {
         mBinding.included.txtError.setVisibility(View.VISIBLE);
+    }
+
+
+    public void onClickFab(View view) {
+        startActivity(AddNoteActivity.getStartIntent(this));
     }
 }

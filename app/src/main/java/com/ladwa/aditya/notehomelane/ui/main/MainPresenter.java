@@ -5,8 +5,6 @@ import com.ladwa.aditya.notehomelane.data.model.Note;
 import com.ladwa.aditya.notehomelane.injection.scope.ConfigPersistent;
 import com.ladwa.aditya.notehomelane.ui.base.BasePresenter;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import io.realm.RealmResults;
@@ -44,9 +42,9 @@ public class MainPresenter extends BasePresenter<MainContract.View> implements M
     @Override
     public void getAllNotes() {
         RealmResults<Note> notes = dataManager.getNotes();
-        if (notes.size() > 0){
+        if (notes.size() > 0) {
             getMvpView().setProjects(notes);
-        }else {
+        } else {
             getMvpView().showEmpty();
         }
     }

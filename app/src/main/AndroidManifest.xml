@@ -20,10 +20,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ui.edit.EditNoteActivity">
-        </activity>
-        <activity android:name=".ui.detail.DetailActivity">
-        </activity>
+        <activity
+            android:name=".ui.add.AddNoteActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ui.detail.DetailActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

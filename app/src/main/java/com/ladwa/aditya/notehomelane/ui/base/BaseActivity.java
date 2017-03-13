@@ -5,7 +5,6 @@ import android.support.v4.util.LongSparseArray;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-
 import com.ladwa.aditya.notehomelane.HomeLaneApplication;
 import com.ladwa.aditya.notehomelane.injection.component.ActivityComponent;
 import com.ladwa.aditya.notehomelane.injection.component.ConfigPersistentComponent;
