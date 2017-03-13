@@ -49,7 +49,14 @@ public class AddNoteActivity extends BaseActivity implements AddNoteContract.Vie
     }
 
 
-    public void onClickSaveNote(View view) {
-        Timber.d("Save note");
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_save:
+                Timber.d("Saving note");
+                break;
+            case R.id.img_note_attachment:
+                Timber.d("Clicked Image");
+                break;
+        }
     }
 }
