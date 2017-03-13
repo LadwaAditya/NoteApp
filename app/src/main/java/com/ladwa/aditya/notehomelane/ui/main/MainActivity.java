@@ -2,10 +2,13 @@ package com.ladwa.aditya.notehomelane.ui.main;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
 
 import com.ladwa.aditya.notehomelane.R;
 import com.ladwa.aditya.notehomelane.data.model.Note;
 import com.ladwa.aditya.notehomelane.databinding.ActivityMainBinding;
+import com.ladwa.aditya.notehomelane.ui.adapter.NoteAdapter;
 import com.ladwa.aditya.notehomelane.ui.base.BaseActivity;
 
 import java.util.Date;
@@ -35,6 +38,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     public void setUpView() {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         setSupportActionBar(mBinding.toolbar);
+        mBinding.included.recyclerViewNotes.setLayoutManager(new LinearLayoutManager(this));
         Note newNote = new Note();
         newNote.setTitle("New Title");
         newNote.setText("This is the text for the new Text");
@@ -44,14 +48,20 @@ public class MainActivity extends BaseActivity implements MainContract.View {
         mPresenter.getAllNotes();
     }
 
+    @Override
+    protected void onDestroy() {
+        mPresenter.detachView();
+        super.onDestroy();
+    }
 
     @Override
     public void setProjects(RealmResults<Note> notes) {
+        mBinding.included.recyclerViewNotes.setAdapter(new NoteAdapter(notes));
 
     }
 
     @Override
     public void showEmpty() {
-
+        mBinding.included.txtError.setVisibility(View.VISIBLE);
     }
 }

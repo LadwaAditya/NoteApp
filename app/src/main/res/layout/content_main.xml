@@ -12,9 +12,18 @@
         tools:showIn="@layout/activity_main">
 
         <TextView
+            android:id="@+id/txt_error"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!"/>
+            android:layout_centerInParent="true"
+            android:text="@string/no_notes_available"
+            android:textSize="@dimen/title_medium"
+            android:visibility="invisible"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView_notes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
     </RelativeLayout>
 </layout>
