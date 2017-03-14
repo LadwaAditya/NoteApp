@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -49,4 +50,15 @@ public class AddNotePresenterTest {
         verify(mockView).noteSaved();
     }
 
+    @Test
+    public void getNoteByPrimaryKey_shouldReturnResult() throws Exception {
+        Note note = TestDataFactory.makeNote("String");
+
+        when(mockDataManager.getNoteByPrimaryKey(note.getId())).thenReturn(note);
+
+        presenter.getNoteByPrimaryKey(note.getId());
+
+        verify(mockView).setUpView();
+        verify(mockView).setNote(any(Note.class));
+    }
 }
