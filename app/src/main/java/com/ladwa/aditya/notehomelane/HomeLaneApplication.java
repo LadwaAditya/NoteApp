@@ -28,7 +28,6 @@ public class HomeLaneApplication extends Application {
     public void onCreate() {
         super.onCreate();
         Realm.init(getApplicationContext());
-
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
             Stetho.initialize(

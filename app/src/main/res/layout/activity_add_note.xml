@@ -64,24 +64,36 @@
                         android:inputType="textMultiLine"/>
                 </android.support.design.widget.TextInputLayout>
 
-
-
-                <Button
-                    android:id="@+id/btn_save"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end"
                     android:layout_marginEnd="@dimen/horizontal_margin_small"
                     android:layout_marginTop="@dimen/verticle_margin_small"
-                    android:onClick="onClick"
-                    android:text="@string/save"/>
+                    android:gravity="end">
+
+                    <Button
+                        android:id="@+id/btn_attach_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:onClick="onClick"
+                        android:text="Attach Image"/>
+
+                    <Button
+                        android:id="@+id/btn_save"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:onClick="onClick"
+                        android:text="@string/save"/>
+                </LinearLayout>
 
                 <ImageView
                     android:id="@+id/img_attachment"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_gravity="center_horizontal"
-                    android:onClick="onClick"
+                    android:layout_marginTop="30dp"
                     android:scaleType="centerCrop"/>
 
             </LinearLayout>

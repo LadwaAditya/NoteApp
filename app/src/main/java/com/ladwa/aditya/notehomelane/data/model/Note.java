@@ -13,7 +13,7 @@ public class Note extends RealmObject {
     private long id;
     private String title;
     private String text;
-    private long createdAt;
+    private String createdAt;
     private String url;
 
 
@@ -41,11 +41,11 @@ public class Note extends RealmObject {
         this.text = text;
     }
 
-    public long getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(long createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 

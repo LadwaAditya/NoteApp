@@ -24,7 +24,10 @@ import com.ladwa.aditya.notehomelane.ui.base.BaseActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -72,20 +75,20 @@ public class AddNoteActivity extends BaseActivity implements AddNoteContract.Vie
             case R.id.btn_save:
                 validateFields();
                 break;
-            case R.id.img_attachment:
+            case R.id.btn_attach_image:
                 startCameraIntent();
                 break;
         }
     }
 
     private void validateFields() {
-        if (mBinding.txtNoteTitle.getText().length() > 5 && mBinding.txtNoteText.getText().length() > 10) {
+        if (mBinding.txtNoteTitle.getText().length() > 5 && mBinding.txtNoteText.getText().length() > 15) {
             saveNote();
         } else {
             if (mBinding.txtNoteTitle.getText().length() < 5) {
                 mBinding.txtNoteTitle.setError("Title must be grater than 5 characters :)");
-            } else if (mBinding.txtNoteText.getText().length() < 10) {
-                mBinding.txtNoteText.setError("Note text must be grater than 10 characters :)");
+            } else if (mBinding.txtNoteText.getText().length() < 15) {
+                mBinding.txtNoteText.setError("Note text must be grater than 15 characters :)");
             }
         }
     }
@@ -94,12 +97,18 @@ public class AddNoteActivity extends BaseActivity implements AddNoteContract.Vie
         Note newNote = new Note();
         newNote.setTitle(mBinding.txtNoteTitle.getText().toString());
         newNote.setText(mBinding.txtNoteText.getText().toString());
-        newNote.setCreatedAt(new Date().getTime());
+        String dateTime = getCurrentDateTime();
+        newNote.setCreatedAt(dateTime);
         newNote.setUrl(imgFlag ? imageFile.getAbsolutePath() : "");
         presenter.createNote(newNote);
         finish();
     }
 
+    private String getCurrentDateTime() {
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy, hh:mm: aa", Locale.ENGLISH);
+        return dateFormat.format(c.getTime());
+    }
     private void startCameraIntent() {
         RxPermission.with(this.getFragmentManager()).request(Manifest.permission.CAMERA,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE)
