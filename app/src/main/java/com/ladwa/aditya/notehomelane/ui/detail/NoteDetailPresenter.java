@@ -9,7 +9,6 @@ import javax.inject.Inject;
 /**
  * Created by Aditya on 14-Mar-17.
  */
-
 public class NoteDetailPresenter extends BasePresenter<NoteDetailContract.View> implements NoteDetailContract.Presenter {
 
 
