@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import com.ladwa.aditya.notehomelane.R;
 import com.ladwa.aditya.notehomelane.data.model.Note;
 import com.ladwa.aditya.notehomelane.databinding.ListItemNoteBinding;
-import com.ladwa.aditya.notehomelane.ui.detail.DetailActivity;
+import com.ladwa.aditya.notehomelane.ui.detail.NoteDetailActivity;
 
 import java.util.List;
 
@@ -63,7 +63,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
 
         public void onClick(View view) {
             Context context = view.getContext();
-            context.startActivity(DetailActivity.getStartIntent(context));
+            context.startActivity(NoteDetailActivity.getStartIntent(context,mNote.getId()));
         }
     }
 }

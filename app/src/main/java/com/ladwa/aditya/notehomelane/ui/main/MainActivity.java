@@ -28,6 +28,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityComponent().inject(this);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
     }
 
     @Override
@@ -38,7 +39,6 @@ public class MainActivity extends BaseActivity implements MainContract.View {
 
     @Override
     public void setUpView() {
-        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         setSupportActionBar(mBinding.toolbar);
         mBinding.included.recyclerViewNotes.setLayoutManager(new LinearLayoutManager(this));
         mPresenter.getAllNotes();

@@ -26,7 +26,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 import javax.inject.Inject;
@@ -49,6 +48,7 @@ public class AddNoteActivity extends BaseActivity implements AddNoteContract.Vie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityComponent().inject(this);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_note);
     }
 
     @Override
@@ -65,7 +65,6 @@ public class AddNoteActivity extends BaseActivity implements AddNoteContract.Vie
 
     @Override
     public void setUpView() {
-        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_note);
         mBinding.toolbar.setTitle(R.string.title_add_new_note);
     }
 
@@ -82,16 +81,15 @@ public class AddNoteActivity extends BaseActivity implements AddNoteContract.Vie
     }
 
     private void validateFields() {
-        if (mBinding.txtNoteTitle.getText().length() > 5 && mBinding.txtNoteText.getText().length() > 15) {
+        if (mBinding.txtNoteTitle.getText().length() >= 5 && mBinding.txtNoteText.getText().length() >= 15) {
             saveNote();
-        } else {
-            if (mBinding.txtNoteTitle.getText().length() < 5) {
-                mBinding.txtNoteTitle.setError("Title must be grater than 5 characters :)");
-            } else if (mBinding.txtNoteText.getText().length() < 15) {
-                mBinding.txtNoteText.setError("Note text must be grater than 15 characters :)");
-            }
+        } else if (mBinding.txtNoteTitle.getText().length() <= 5) {
+            mBinding.txtNoteTitle.setError("Title must be grater than 5 characters :)");
+        } else if (mBinding.txtNoteText.getText().length() <= 15) {
+            mBinding.txtNoteText.setError("Note text must be grater than 15 characters :)");
         }
     }
+
 
     private void saveNote() {
         Note newNote = new Note();
@@ -109,6 +107,7 @@ public class AddNoteActivity extends BaseActivity implements AddNoteContract.Vie
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy, hh:mm: aa", Locale.ENGLISH);
         return dateFormat.format(c.getTime());
     }
+
     private void startCameraIntent() {
         RxPermission.with(this.getFragmentManager()).request(Manifest.permission.CAMERA,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE)

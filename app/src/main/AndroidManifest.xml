@@ -27,7 +27,7 @@
             android:name=".ui.add.AddNoteActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".ui.detail.DetailActivity"
+            android:name=".ui.detail.NoteDetailActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 

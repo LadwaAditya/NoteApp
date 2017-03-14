@@ -12,4 +12,6 @@ public interface DataRepository {
     long createDummyNote(Note note);
 
     RealmResults<Note> getNotes();
+
+    Note getNoteByPrimaryKey(long id);
 }

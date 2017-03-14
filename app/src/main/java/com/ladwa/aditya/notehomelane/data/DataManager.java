@@ -36,4 +36,9 @@ public class DataManager implements DataRepository {
         Realm dataRealm = mDbManager.getDataRealm();
         return dataRealm.where(Note.class).findAll();
     }
+
+    @Override
+    public Note getNoteByPrimaryKey(long id) {
+        return mDbManager.getDataRealm().where(Note.class).equalTo("id", id).findFirst();
+    }
 }

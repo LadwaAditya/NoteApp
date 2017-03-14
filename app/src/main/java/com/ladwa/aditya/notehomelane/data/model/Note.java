@@ -6,7 +6,6 @@ import io.realm.annotations.PrimaryKey;
 /**
  * Created by Aditya on 13-Mar-17.
  */
-
 public class Note extends RealmObject {
 
     @PrimaryKey

@@ -5,6 +5,7 @@ import com.ladwa.aditya.notehomelane.injection.module.ActivityModule;
 import com.ladwa.aditya.notehomelane.injection.scope.PerActivity;
 import com.ladwa.aditya.notehomelane.ui.add.AddNoteActivity;
 import com.ladwa.aditya.notehomelane.ui.base.BaseActivity;
+import com.ladwa.aditya.notehomelane.ui.detail.NoteDetailActivity;
 import com.ladwa.aditya.notehomelane.ui.main.MainActivity;
 
 import dagger.Subcomponent;
@@ -20,4 +21,7 @@ public interface ActivityComponent {
     void inject(MainActivity mainActivity);
 
     void inject(AddNoteActivity addNoteActivity);
+
+    void inject(NoteDetailActivity noteDetailActivity);
+
 }
