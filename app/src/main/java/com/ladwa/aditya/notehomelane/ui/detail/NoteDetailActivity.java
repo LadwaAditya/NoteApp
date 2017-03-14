@@ -52,6 +52,7 @@ public class NoteDetailActivity extends BaseActivity implements NoteDetailContra
         setSupportActionBar(mBinding.toolbar);
         long longExtra = getIntent().getLongExtra(EXTRA_NOTE_ID, -1);
         presenter.getNoteByPrimaryKey(longExtra);
+
     }
 
 
