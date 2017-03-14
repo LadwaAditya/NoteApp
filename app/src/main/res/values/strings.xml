@@ -8,4 +8,5 @@
     <string name="title_add_new_note">Add a New Note</string>
     <string name="permission_error">Please grant the Permission</string>
     <string name="text_detail">Name and Title detail Name and Title detail Name and Title detail Name and Title detail Name and Title detail Name and Title detail Name and Title detail </string>
+    <string name="action_delete">Delete</string>
 </resources>

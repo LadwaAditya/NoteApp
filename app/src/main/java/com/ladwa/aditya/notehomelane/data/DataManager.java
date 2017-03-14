@@ -23,7 +23,6 @@ public class DataManager implements DataRepository {
 
     @Override
     public long createDummyNote(Note note) {
-        note.setId(getNotes().size() + 1);
         Realm dataRealm = mDbManager.getDataRealm();
         dataRealm.beginTransaction();
         dataRealm.insert(note);
@@ -40,5 +39,16 @@ public class DataManager implements DataRepository {
     @Override
     public Note getNoteByPrimaryKey(long id) {
         return mDbManager.getDataRealm().where(Note.class).equalTo("id", id).findFirst();
+    }
+
+    @Override
+    public long deleteNote(long id) {
+        Realm dataRealm = mDbManager.getDataRealm();
+        Note note = dataRealm.where(Note.class).equalTo("id", id).findFirst();
+        long noteId = note.getId();
+        dataRealm.beginTransaction();
+        note.deleteFromRealm();
+        dataRealm.commitTransaction();
+        return noteId;
     }
 }

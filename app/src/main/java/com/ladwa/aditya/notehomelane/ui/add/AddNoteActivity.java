@@ -26,6 +26,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import javax.inject.Inject;
@@ -95,6 +96,7 @@ public class AddNoteActivity extends BaseActivity implements AddNoteContract.Vie
         Note newNote = new Note();
         newNote.setTitle(mBinding.txtNoteTitle.getText().toString());
         newNote.setText(mBinding.txtNoteText.getText().toString());
+        newNote.setId(new Date().getTime());
         String dateTime = getCurrentDateTime();
         newNote.setCreatedAt(dateTime);
         newNote.setUrl(imgFlag ? imageFile.getAbsolutePath() : "");

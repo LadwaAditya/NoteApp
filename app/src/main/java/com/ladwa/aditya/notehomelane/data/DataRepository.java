@@ -14,4 +14,6 @@ public interface DataRepository {
     RealmResults<Note> getNotes();
 
     Note getNoteByPrimaryKey(long id);
+
+    long deleteNote(long id);
 }

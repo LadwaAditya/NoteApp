@@ -32,8 +32,14 @@ public class NoteDetailPresenter extends BasePresenter<NoteDetailContract.View> 
     }
 
     @Override
-    public void getNoteByPrimeryKey(long id) {
+    public void getNoteByPrimaryKey(long id) {
         Note noteByPrimaryKey = dataManager.getNoteByPrimaryKey(id);
         getMvpView().setNote(noteByPrimaryKey);
+    }
+
+    @Override
+    public void deleteNote(Note note) {
+        long id = dataManager.deleteNote(note.getId());
+        getMvpView().noteDeleted(id);
     }
 }

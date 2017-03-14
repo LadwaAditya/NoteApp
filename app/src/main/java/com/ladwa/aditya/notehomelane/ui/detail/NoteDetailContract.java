@@ -11,9 +11,13 @@ import com.ladwa.aditya.notehomelane.ui.base.MvpView;
 public class NoteDetailContract {
     interface View extends MvpView {
         void setNote(Note note);
+
+        void noteDeleted(long id);
     }
 
     interface Presenter extends MvpPresenter<NoteDetailContract.View> {
-        void getNoteByPrimeryKey(long id);
+        void getNoteByPrimaryKey(long id);
+
+        void deleteNote(Note note);
     }
 }
