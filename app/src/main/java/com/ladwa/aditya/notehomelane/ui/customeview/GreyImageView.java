@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 /**
+ * A Custom {@link android.widget.ImageView} that adds Greyscale filter on touch
  * Created by Aditya on 14-Mar-17.
  */
 
