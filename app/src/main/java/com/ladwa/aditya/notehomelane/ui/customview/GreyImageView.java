@@ -1,9 +1,10 @@
-package com.ladwa.aditya.notehomelane.ui.customeview;
+package com.ladwa.aditya.notehomelane.ui.customview;
 
 import android.content.Context;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 
 /**
@@ -13,6 +14,7 @@ import android.view.MotionEvent;
 
 public class GreyImageView extends android.support.v7.widget.AppCompatImageView {
 
+    private final String TAG = GreyImageView.class.getSimpleName();
 
     public GreyImageView(Context context) {
         super(context);
@@ -29,24 +31,29 @@ public class GreyImageView extends android.support.v7.widget.AppCompatImageView 
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        boolean consumed = super.onTouchEvent(event);
         final int action = event.getAction();
-
         switch (action) {
             case MotionEvent.ACTION_DOWN:
                 ColorMatrix matrix = new ColorMatrix();
                 matrix.setSaturation(0);
                 ColorMatrixColorFilter filter = new ColorMatrixColorFilter(matrix);
-                getDrawable().setColorFilter(filter);
-                consumed = true;
-                break;
-
+                if (getDrawable() != null) {
+                    getDrawable().setColorFilter(filter);
+                } else {
+                    Log.e(TAG, "No image View Set");
+                }
+                return true;
             case MotionEvent.ACTION_UP:
                 ColorMatrix colorMatrix = new ColorMatrix();
                 ColorMatrixColorFilter colorfilter = new ColorMatrixColorFilter(colorMatrix);
-                getDrawable().setColorFilter(colorfilter);
-                break;
+                if (getDrawable() != null) {
+                    getDrawable().setColorFilter(colorfilter);
+                } else {
+                    Log.e(TAG, "No image View Set");
+                }
+                return true;
+            default:
+                return super.onTouchEvent(event);
         }
-        return consumed;
     }
 }

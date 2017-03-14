@@ -31,13 +31,18 @@ import java.util.Locale;
 
 import javax.inject.Inject;
 
+import timber.log.Timber;
+
 public class AddNoteActivity extends BaseActivity implements AddNoteContract.View {
 
     @Inject AddNotePresenter presenter;
 
     private final int REQUEST_CODE_CAPTURE_IMAGE = 100;
+    private static final String EXTRA_NOTE_ID = "extra_note_id";
+
     private ActivityAddNoteBinding mBinding;
-    private File imageFile;
+    private String imagePath;
+    private Note mNote;
     private boolean imgFlag = false;
 
 
@@ -45,18 +50,25 @@ public class AddNoteActivity extends BaseActivity implements AddNoteContract.Vie
         return new Intent(context, AddNoteActivity.class);
     }
 
+
+    public static Intent getStartIntent(@NonNull Context context, long noteId) {
+        Intent intent = new Intent(context, AddNoteActivity.class);
+        intent.putExtra(EXTRA_NOTE_ID, noteId);
+        return intent;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityComponent().inject(this);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_note);
+        presenter.attachView(this);
+        long noteId = getIntent().getLongExtra(EXTRA_NOTE_ID, -1);
+        if (noteId != -1) {
+            presenter.getNoteByPrimaryKey(noteId);
+        }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        presenter.attachView(this);
-    }
 
     @Override
     protected void onDestroy() {
@@ -96,10 +108,10 @@ public class AddNoteActivity extends BaseActivity implements AddNoteContract.Vie
         Note newNote = new Note();
         newNote.setTitle(mBinding.txtNoteTitle.getText().toString());
         newNote.setText(mBinding.txtNoteText.getText().toString());
-        newNote.setId(new Date().getTime());
+        newNote.setId(mNote == null ? new Date().getTime() : mNote.getId());
         String dateTime = getCurrentDateTime();
         newNote.setCreatedAt(dateTime);
-        newNote.setUrl(imgFlag ? imageFile.getAbsolutePath() : "");
+        newNote.setUrl(imgFlag ? imagePath : "");
         presenter.createNote(newNote);
         finish();
     }
@@ -129,10 +141,13 @@ public class AddNoteActivity extends BaseActivity implements AddNoteContract.Vie
         if (requestCode == REQUEST_CODE_CAPTURE_IMAGE && resultCode == Activity.RESULT_OK) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             Uri imageUri = getImageUri(this, photo);
-            imageFile = new File(getRealPathFromURI(imageUri));
-            mBinding.imgAttachment.postDelayed(() -> Glide.with(AddNoteActivity.this)
-                    .load(imageFile.getAbsoluteFile())
-                    .into(mBinding.imgAttachment), 1000);
+            File imageFile = new File(getRealPathFromURI(imageUri));
+            imagePath = imageFile.getAbsolutePath();
+            Timber.d(imagePath);
+            mBinding.imgAttachment.postDelayed(() ->
+                    Glide.with(AddNoteActivity.this)
+                            .load(imagePath)
+                            .into(mBinding.imgAttachment), 1000);
             imgFlag = true;
         }
     }
@@ -155,5 +170,17 @@ public class AddNoteActivity extends BaseActivity implements AddNoteContract.Vie
     @Override
     public void noteSaved() {
         Toast.makeText(this, "Noted Saved", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void setNote(Note note) {
+        mNote = note;
+        mBinding.txtNoteTitle.setText(note.getTitle());
+        mBinding.txtNoteText.setText(note.getText());
+        if (mNote.getUrl().length() > 0) {
+            imgFlag = true;
+            imagePath = note.getUrl();
+        }
+        Glide.with(this).load(mNote.getUrl()).into(mBinding.imgAttachment);
     }
 }

@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.ladwa.aditya.notehomelane.R;
 import com.ladwa.aditya.notehomelane.data.model.Note;
 import com.ladwa.aditya.notehomelane.databinding.ActivityDetailBinding;
+import com.ladwa.aditya.notehomelane.ui.add.AddNoteActivity;
 import com.ladwa.aditya.notehomelane.ui.base.BaseActivity;
 
 import javax.inject.Inject;
@@ -69,6 +70,9 @@ public class NoteDetailActivity extends BaseActivity implements NoteDetailContra
                 presenter.deleteNote(mNote);
                 Timber.d("Called delete");
                 return true;
+            case R.id.action_edit:
+                startActivity(AddNoteActivity.getStartIntent(this, mNote.getId()));
+                finish();
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -85,7 +89,8 @@ public class NoteDetailActivity extends BaseActivity implements NoteDetailContra
         mNote = note;
         mBinding.toolbar.setTitle(mNote.getTitle());
         mBinding.txtDetail.setText(mNote.getText());
-        Glide.with(this).load(mNote.getUrl()).into(mBinding.imgAttachment);
+        Glide.with(this).load(mNote.getUrl())
+                .into(mBinding.imgAttachment);
     }
 
     @Override

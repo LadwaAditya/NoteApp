@@ -41,7 +41,7 @@ public class AddNotePresenterTest {
     @Test
     public void createNote_shouldReturnResult() throws Exception {
         Note note = TestDataFactory.makeNote("String");
-        when(mockDataManager.createDummyNote(note)).thenReturn(note.getId());
+        when(mockDataManager.createOrUpdateNote(note)).thenReturn(note.getId());
 
         presenter.createNote(note);
 

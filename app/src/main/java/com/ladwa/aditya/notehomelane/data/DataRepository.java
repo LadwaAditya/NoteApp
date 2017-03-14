@@ -9,7 +9,7 @@ import io.realm.RealmResults;
  */
 
 public interface DataRepository {
-    long createDummyNote(Note note);
+    long createOrUpdateNote(Note note);
 
     RealmResults<Note> getNotes();
 

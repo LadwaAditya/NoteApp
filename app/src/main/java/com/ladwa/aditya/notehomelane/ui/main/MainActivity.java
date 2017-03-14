@@ -54,6 +54,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     public void setProjects(RealmResults<Note> notes) {
         noteAdapter = new NoteAdapter(notes);
         mBinding.included.recyclerViewNotes.setAdapter(noteAdapter);
+        mBinding.included.txtError.setVisibility(View.INVISIBLE);
     }
 
     @Override
