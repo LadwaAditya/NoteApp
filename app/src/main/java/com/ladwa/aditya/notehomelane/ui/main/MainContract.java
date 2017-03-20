@@ -4,6 +4,8 @@ import com.ladwa.aditya.notehomelane.data.model.Note;
 import com.ladwa.aditya.notehomelane.ui.base.MvpPresenter;
 import com.ladwa.aditya.notehomelane.ui.base.MvpView;
 
+import java.util.List;
+
 import io.realm.RealmResults;
 
 /**
@@ -12,7 +14,7 @@ import io.realm.RealmResults;
 
 public interface MainContract {
     interface View extends MvpView {
-        void setProjects(RealmResults<Note> notes);
+        void setProjects(List<Note> notes);
 
         void showEmpty();
     }

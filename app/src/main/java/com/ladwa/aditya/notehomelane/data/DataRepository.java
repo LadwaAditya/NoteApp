@@ -2,6 +2,8 @@ package com.ladwa.aditya.notehomelane.data;
 
 import com.ladwa.aditya.notehomelane.data.model.Note;
 
+import java.util.List;
+
 import io.realm.RealmResults;
 
 /**
@@ -11,7 +13,7 @@ import io.realm.RealmResults;
 public interface DataRepository {
     long createOrUpdateNote(Note note);
 
-    RealmResults<Note> getNotes();
+    List<Note> getNotes();
 
     Note getNoteByPrimaryKey(long id);
 

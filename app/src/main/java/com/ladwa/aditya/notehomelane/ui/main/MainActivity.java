@@ -12,6 +12,8 @@ import com.ladwa.aditya.notehomelane.ui.adapter.NoteAdapter;
 import com.ladwa.aditya.notehomelane.ui.add.AddNoteActivity;
 import com.ladwa.aditya.notehomelane.ui.base.BaseActivity;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import io.realm.RealmResults;
@@ -51,7 +53,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     }
 
     @Override
-    public void setProjects(RealmResults<Note> notes) {
+    public void setProjects(List<Note> notes) {
         noteAdapter = new NoteAdapter(notes);
         mBinding.included.recyclerViewNotes.setAdapter(noteAdapter);
         mBinding.included.txtError.setVisibility(View.INVISIBLE);

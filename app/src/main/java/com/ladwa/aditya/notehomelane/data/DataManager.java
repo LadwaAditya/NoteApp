@@ -3,6 +3,8 @@ package com.ladwa.aditya.notehomelane.data;
 import com.ladwa.aditya.notehomelane.data.local.DbManager;
 import com.ladwa.aditya.notehomelane.data.model.Note;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -31,7 +33,7 @@ public class DataManager implements DataRepository {
     }
 
     @Override
-    public RealmResults<Note> getNotes() {
+    public List<Note> getNotes() {
         Realm dataRealm = mDbManager.getDataRealm();
         return dataRealm.where(Note.class).findAll();
     }
