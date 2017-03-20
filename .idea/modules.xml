@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/NoteHomeLane.iml" filepath="$PROJECT_DIR$/NoteHomeLane.iml" />
+      <module fileurl="file://E:\Aditya\WorkSpace\Android_Studio\homelane\NoteHomeLane.iml" filepath="E:\Aditya\WorkSpace\Android_Studio\homelane\NoteHomeLane.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/homelane.iml" filepath="$PROJECT_DIR$/homelane.iml" />
     </modules>
