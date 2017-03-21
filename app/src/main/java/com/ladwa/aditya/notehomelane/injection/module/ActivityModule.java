@@ -3,7 +3,6 @@ package com.ladwa.aditya.notehomelane.injection.module;
 import android.app.Activity;
 import android.content.Context;
 
-
 import com.ladwa.aditya.notehomelane.injection.scope.ActivityContext;
 
 import dagger.Module;

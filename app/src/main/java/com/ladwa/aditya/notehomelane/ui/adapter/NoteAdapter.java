@@ -63,7 +63,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
 
         public void onClick(View view) {
             Context context = view.getContext();
-            context.startActivity(NoteDetailActivity.getStartIntent(context,mNote.getId()));
+            context.startActivity(NoteDetailActivity.getStartIntent(context, mNote.getId()));
         }
     }
 }

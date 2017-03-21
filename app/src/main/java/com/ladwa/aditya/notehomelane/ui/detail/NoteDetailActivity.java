@@ -22,10 +22,8 @@ import timber.log.Timber;
 
 public class NoteDetailActivity extends BaseActivity implements NoteDetailContract.View {
 
-    @Inject NoteDetailPresenter presenter;
-
     private static final String EXTRA_NOTE_ID = "extra_note_id";
-
+    @Inject NoteDetailPresenter presenter;
     private ActivityDetailBinding mBinding;
     private Note mNote;
 

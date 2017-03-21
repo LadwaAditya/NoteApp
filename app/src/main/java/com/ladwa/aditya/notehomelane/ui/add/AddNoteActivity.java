@@ -35,11 +35,9 @@ import timber.log.Timber;
 
 public class AddNoteActivity extends BaseActivity implements AddNoteContract.View {
 
-    @Inject AddNotePresenter presenter;
-
-    private final int REQUEST_CODE_CAPTURE_IMAGE = 100;
     private static final String EXTRA_NOTE_ID = "extra_note_id";
-
+    private final int REQUEST_CODE_CAPTURE_IMAGE = 100;
+    @Inject AddNotePresenter presenter;
     private ActivityAddNoteBinding mBinding;
     private String imagePath;
     private Note mNote;

@@ -4,8 +4,6 @@ import com.ladwa.aditya.notehomelane.data.model.Note;
 
 import java.util.List;
 
-import io.realm.RealmResults;
-
 /**
  * Created by Aditya on 13-Mar-17.
  */

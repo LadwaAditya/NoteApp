@@ -9,7 +9,6 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import io.realm.Realm;
-import io.realm.RealmResults;
 
 /**
  * Created by Aditya on 13-Mar-17.

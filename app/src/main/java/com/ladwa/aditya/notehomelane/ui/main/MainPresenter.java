@@ -9,10 +9,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import io.realm.RealmResults;
-
 /**
- *
  * Created by Aditya on 13-Mar-17.
  */
 @ConfigPersistent
@@ -36,7 +33,6 @@ public class MainPresenter extends BasePresenter<MainContract.View> implements M
     public void detachView() {
         super.detachView();
     }
-
 
 
     @Override

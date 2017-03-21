@@ -6,8 +6,6 @@ import com.ladwa.aditya.notehomelane.ui.base.MvpView;
 
 import java.util.List;
 
-import io.realm.RealmResults;
-
 /**
  * Created by Aditya on 13-Mar-17.
  */

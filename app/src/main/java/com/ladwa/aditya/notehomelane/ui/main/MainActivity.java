@@ -16,8 +16,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import io.realm.RealmResults;
-
 public class MainActivity extends BaseActivity implements MainContract.View {
 
     @Inject MainPresenter mPresenter;
